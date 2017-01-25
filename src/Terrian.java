@@ -1,18 +1,11 @@
 
-public class Terrian {
-	/*Directions of robot on terrain*/
-	final String NORTH = "north";
-	final String SOUTH = "south";
-	final String EAST = "east";
-	final String WEST = "west";
-	final String NONE = "none"; /*used when there is no robot on this terrain*/
-	
+public class Terrian {	
 	Boolean start; /*Determine if this terrain is a starting point*/
 	Boolean navigable; /*Determine if this terrain is navigable*/
 	Boolean goal; /*Determine if this terrain is a goal*/
 	int complexity; /*complexity of the terrain*/
 	int row, col; /*position of the terrain within the World grid*/
-	String direction; /*direction that robot on terrain is facing(north, south, west, or east)*/
+	Robot robot;
 	int cost; /*cost of terrain*/
 	
 	/*Initialize a Terrain, values need to be set, they are initially set to be either false or -1*/
@@ -23,7 +16,7 @@ public class Terrian {
 		complexity = -1;
 		row = -1;
 		col = -1;
-		direction = NONE;
+		robot = null;
 		cost = -1;
 	}
 
@@ -88,33 +81,8 @@ public class Terrian {
 	public void setCol(int col) {
 		this.col = col;
 	}
-
-	/*Getters and setters for direction*/
-	public String getDirection() {
-		return direction;
-	}
-
-	public void setDirectionNorth(){
-		direction = NORTH;
-	}
 	
-	public void setDirectionSouth(){
-		direction =SOUTH;
-	}
-	
-	public void setDirectionEast(){
-		direction = EAST;
-	}
-	
-	public void setDirectionWest(){
-		direction = WEST;
-	}
-	
-	public void setDirectionNone(){
-		direction = NONE;
-	}
-	
-	/*Geters and seters for cost*/
+	/*Getters and setters for cost*/
 	public int getCost() {
 		return cost;
 	}
