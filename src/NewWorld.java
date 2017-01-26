@@ -6,8 +6,10 @@ import java.util.HashMap;
 public class NewWorld {
 
 	int row, column;
+	int goalRow, goalColumn;
 	HashMap<Integer, HashMap<Integer, Terrain>> terrains = new HashMap<Integer, HashMap<Integer, Terrain>>();
-
+	String heuristic;
+	
 	/**
 	 * Initialize the world
 	 * @param args
@@ -15,6 +17,7 @@ public class NewWorld {
 	public NewWorld(String[] args) {
 		String array[]; /* Array of elements in the file */
 		String filename = args[0];/* filename to read */
+		heuristic = args[1];
 		/* for opening up the file and reading contents */
 		try {
 			FileReader file = new FileReader(filename);
@@ -55,6 +58,8 @@ public class NewWorld {
 								Robot robot = new Robot();
 								temporary.setRobot(robot);
 							} else if (array[i].equals("G")) {
+								goalRow = thisLine;
+								goalColumn = thisCol;
 								temporary.setGoal(true);
 							} else {
 								int complexity = Integer.parseInt(array[i]);
@@ -77,5 +82,9 @@ public class NewWorld {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public HashMap<Integer, HashMap<Integer, Terrain>> getAllTerrains(){
+		return terrains;
 	}
 }

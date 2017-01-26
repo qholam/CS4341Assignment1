@@ -6,6 +6,7 @@ public class Terrain {
 	int complexity; /*complexity of the terrain*/
 	int row, col; /*position of the terrain within the World grid*/
 	Robot robot;
+	boolean hasRobot;
 	int cost; /*cost of terrain*/ 
 	
 	/*Initialize a Terrain, values need to be set, they are initially set to be either false or -1*/
@@ -34,6 +35,10 @@ public class Terrain {
 	 */
 	public void setRobot(Robot robot) {
 		this.robot = robot;
+		if(robot == null)
+			hasRobot = false;
+		else
+			hasRobot = true;
 	}
 
 	/**
