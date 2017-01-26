@@ -20,10 +20,34 @@ public class Terrain {
 		cost = -1;
 	}
 
+	/**
+	 * Get the robot on this terrain.
+	 * @return Robot on terrain or null if there is no robot on the terrain
+	 */
+	public Robot getRobot() {
+		return robot;
+	}
+
+	/**
+	 * Place the given robot on this terrain
+	 * @param robot
+	 */
+	public void setRobot(Robot robot) {
+		this.robot = robot;
+	}
+
+	/**
+	 * Determines if this terrain is a starting terrain
+	 * @return
+	 */
 	public Boolean getStart() {
 		return start;
 	}
 
+	/**
+	 * Sets this terrain to be a start tile or not
+	 * @param start
+	 */
 	public void setStart(Boolean start) {
 		this.start = start;
 		if(start){
@@ -32,10 +56,18 @@ public class Terrain {
 		}
 	}
 	
+	/**
+	 * Determines if this terrain is a goal terrain
+	 * @return
+	 */
 	public Boolean getGoal() {
 		return goal;
 	}
 
+	/**
+	 * Sets this terrain to be a goal or not
+	 * @param goal
+	 */
 	public void setGoal(Boolean goal) {
 		this.goal = goal;
 		
@@ -45,6 +77,10 @@ public class Terrain {
 		}
 	}
 	
+	/**
+	 * Determines if this terrain is navigable.
+	 * @return
+	 */
 	public Boolean getNavigable() {
 		return navigable;
 	}
@@ -58,35 +94,66 @@ public class Terrain {
 		}
 	}
 
+	/**
+	 * Set whether this terrain is navigable or not
+	 * @return
+	 */
 	public int getComplexity() {
 		return complexity;
 	}
 
+	/**
+	 * Set the complexity of this terrain(1-9)
+	 * @param complexity
+	 */
 	public void setComplexity(int complexity) {
 		this.complexity = complexity;
 	}
 
+	/**
+	 * Get the row in the World this terrain is located in
+	 * @return
+	 */
 	public int getRow() {
 		return row;
 	}
 
+	/**
+	 * Set the row of this terrain relative to the World
+	 * @param row
+	 */
 	public void setRow(int row) {
 		this.row = row;
 	}
 
+	/**
+	 * Get the column in the World this terrain is located in
+	 * @return
+	 */
 	public int getCol() {
 		return col;
 	}
 
+	/**
+	 * Set the column of this terrain relative to the World
+	 * @param row
+	 */
 	public void setCol(int col) {
 		this.col = col;
 	}
 	
-	/*Getters and setters for cost*/
+	/**
+	 * Get the cost of moving into this terrain
+	 * @return
+	 */
 	public int getCost() {
 		return cost;
 	}
 
+	/**
+	 * Set the cost of moving into this terrain
+	 * @param cost
+	 */
 	public void setCost(int cost) {
 		this.cost = cost;
 	}

@@ -50,6 +50,10 @@ public class NewWorld {
 								temporary.setNavigable(true);
 							} else if (array[i].equals("S")) {
 								temporary.setStart(true);
+								
+								/*create a robot and add it to this terrain*/
+								Robot robot = new Robot();
+								temporary.setRobot(robot);
 							} else if (array[i].equals("G")) {
 								temporary.setGoal(true);
 							} else {
