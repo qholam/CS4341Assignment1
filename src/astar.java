@@ -1,5 +1,16 @@
+import java.util.HashMap;
 
 public class astar {
+	/*
+	 * Potentially store heuristic values in a hashmap where the key is the Terrain Object and the associated value is the heuristic cost for that Terrain.
+	 * If we store it this way, we will need functions to generate these hashmaps. 
+	 */
+	HashMap<Terrain, Integer> heuristic1;
+	HashMap<Terrain, Integer> heuristic2;
+	HashMap<Terrain, Integer> heuristic3;
+	HashMap<Terrain, Integer> heuristic4;
+	HashMap<Terrain, Integer> heuristic5;
+	HashMap<Terrain, Integer> heuristic6;
 	
 	/**
 	 * Runs the simulation with given heuristic

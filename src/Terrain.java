@@ -157,4 +157,28 @@ public class Terrain {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
+
+	/**
+	 * Generate the hashcode for a given Terrain Object
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + col;
+		result = prime * result + complexity;
+		result = prime * result + row;
+		return result;
+	}
+
+	/**
+	 * Determines whether this Terrain Object is equal to the given Terrain Object
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		Terrain other = (Terrain) obj;
+		if (this.col == other.getCol() && this.row == other.getRow() && this.cost == other.getCost())
+			return true;
+		return false;
+	}
 }
