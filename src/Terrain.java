@@ -1,15 +1,15 @@
 
-public class Terrian {	
+public class Terrain {	
 	Boolean start; /*Determine if this terrain is a starting point*/
 	Boolean navigable; /*Determine if this terrain is navigable*/
 	Boolean goal; /*Determine if this terrain is a goal*/
 	int complexity; /*complexity of the terrain*/
 	int row, col; /*position of the terrain within the World grid*/
 	Robot robot;
-	int cost; /*cost of terrain*/
+	int cost; /*cost of terrain*/ 
 	
 	/*Initialize a Terrain, values need to be set, they are initially set to be either false or -1*/
-	public Terrian(){
+	public Terrain(){
 		start = false;
 		navigable = false;
 		goal = false;
