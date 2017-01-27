@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class astar {
 	static NewWorld world;
@@ -11,6 +13,45 @@ public class astar {
 		world = new NewWorld(args);
 	}
 
+	public void astarSearch(NewWorld world){
+		/*Possible actions that can be done*/
+		String TURN_LEFT = "turn left";
+		String TURN_RIGHT = "turn right";
+		String FORWARD = "forward";
+		String LEAP = "leap";
+		
+		/*Directions robot can face*/
+		String NORTH = "north";
+		String SOUTH = "south";
+		String WEST = "west";
+		String EAST = "east";
+		
+		
+		PriorityQueue<Node> pq = new PriorityQueue<Node>(); //Priority queue of unexpanded nodes ordered from least total cost to greatest total cost so far
+		LinkedList<Node> closed = new LinkedList<Node>(); //list of all nodes that have been already expanded
+		Node cur; //current node we are examining 
+		
+		/*Create the starting node*/
+		Terrain startTerrain = world.getAllTerrains().get(world.startRow).get(world.startCol);
+		Node start = new Node(startTerrain);
+		start.parent = null;
+		start.costToGetHere = 1;
+		start.heuristicCost = 0;
+		start.totalCost = start.costToGetHere + start.heuristicCost;
+		start.actions.add("");
+		pq.add(start);
+		
+		/*Search through paths until goal is reached*/
+		cur = start;
+		while(!cur.root.getGoal()){
+			/*get the top node in the priority queue*/
+			cur = pq.poll();
+			
+			
+		}
+		
+	}
+	
 	/**
 	 * Attempts to move the robot 3 spaces forward.
 	 * @return True if the leap was able to be executed, and false otherwise

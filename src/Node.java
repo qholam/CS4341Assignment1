@@ -1,18 +1,14 @@
 import java.util.LinkedList;
 
 public class Node {
-	int cost; 
-	Terrain parent;
-	LinkedList<Terrain> children;
-	int row, col;
-	Terrain root; 
-	boolean goal;
+	Terrain root;
+	LinkedList<Node> children;
+	Node parent;
+	int costToGetHere;
+	int heuristicCost;
+	int totalCost;
+	LinkedList<String> actions; //the actions needed to get from parent node to this node
 	public Node(Terrain t){
 		root = t;
-		children = new LinkedList<Terrain>();
-		row = t.getRow();
-		col = t.getCol();
-		cost = t.getComplexity();
-		goal = t.getGoal();
 	}
 }
