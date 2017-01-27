@@ -7,6 +7,7 @@ public class NewWorld {
 
 	int row, column;
 	int goalRow, goalColumn;
+	int startRow, startCol;
 	HashMap<Integer, HashMap<Integer, Terrain>> terrains = new HashMap<Integer, HashMap<Integer, Terrain>>();
 	String heuristic;
 	
@@ -53,6 +54,9 @@ public class NewWorld {
 								temporary.setNavigable(true);
 							} else if (array[i].equals("S")) {
 								temporary.setStart(true);
+								
+								startRow = thisLine;
+								startCol = thisCol;
 								
 								/*create a robot and add it to this terrain*/
 								Robot robot = new Robot();

@@ -247,11 +247,13 @@ public class astar {
 	/**
 	 * Makes the best move currently available to the robot
 	 */
-	public boolean doBestMove() {
+	public boolean doBestMove(Terrain t) {
 		boolean success = false;
 
 		// TODO: implement this, this should call doForwardMove(), doTurn(), or
 		// doLeap()
+		//array of moves 
+		
 
 		return success;
 	}

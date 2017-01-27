@@ -14,12 +14,6 @@ public class heuristics {
 	HashMap<Terrain, Integer> heuristic5;
 	HashMap<Terrain, Integer> heuristic6;
 	
-	NewWorld world;
-	
-	public heuristics(NewWorld world){
-		this.world = world;
-	}
-	
 	public void setUp1(){
 		HashMap<Integer, HashMap<Integer, Terrain>> terrains = world.getAllTerrains();
 		for(int i = 0; i < terrains.size(); i++){
