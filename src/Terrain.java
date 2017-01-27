@@ -5,8 +5,7 @@ public class Terrain {
 	Boolean goal; /*Determine if this terrain is a goal*/
 	int complexity; /*complexity of the terrain*/
 	int row, col; /*position of the terrain within the World grid*/
-	Robot robot;
-	boolean hasRobot;
+	String direction;
 	int cost; /*cost of terrain*/ 
 	
 	/*Initialize a Terrain, values need to be set, they are initially set to be either false or -1*/
@@ -17,30 +16,18 @@ public class Terrain {
 		complexity = -1;
 		row = -1;
 		col = -1;
-		robot = null;
+		direction = "";
 		cost = -1;
 	}
 
-	/**
-	 * Get the robot on this terrain.
-	 * @return Robot on terrain or null if there is no robot on the terrain
-	 */
-	public Robot getRobot() {
-		return robot;
+	public String getDirection(){
+		return direction;
 	}
-
-	/**
-	 * Place the given robot on this terrain
-	 * @param robot
-	 */
-	public void setRobot(Robot robot) {
-		this.robot = robot;
-		if(robot == null)
-			hasRobot = false;
-		else
-			hasRobot = true;
+	
+	public void setDirection(String dir){
+		direction = dir;
 	}
-
+	
 	/**
 	 * Determines if this terrain is a starting terrain
 	 * @return
@@ -58,6 +45,7 @@ public class Terrain {
 		if(start){
 			goal = false;
 			navigable = true; 
+			complexity = 1;
 		}
 	}
 	
@@ -79,6 +67,7 @@ public class Terrain {
 		if(goal){
 			start = false;
 			navigable = true;
+			complexity = 1;
 		}
 	}
 	
@@ -182,8 +171,21 @@ public class Terrain {
 	@Override
 	public boolean equals(Object obj) {
 		Terrain other = (Terrain) obj;
-		if (this.col == other.getCol() && this.row == other.getRow() && this.cost == other.getCost())
+		if (this.col == other.getCol() && this.row == other.getRow() && this.complexity == other.getComplexity())
 			return true;
 		return false;
+	}
+	
+	public String toString(){
+		String str = "";
+		
+		if(goal)
+			str = "G";
+		else if(start)
+			str = "S";
+		else
+			str = Integer.toString(complexity);
+		
+		return str;
 	}
 }

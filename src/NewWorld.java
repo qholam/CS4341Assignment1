@@ -18,7 +18,6 @@ public class NewWorld {
 	public NewWorld(String[] args) {
 		String array[]; /* Array of elements in the file */
 		String filename = args[0];/* filename to read */
-		heuristic = args[1];
 		/* for opening up the file and reading contents */
 		try {
 			FileReader file = new FileReader(filename);
@@ -34,7 +33,6 @@ public class NewWorld {
 				if (line != null) {
 					array = line.split("\t");
 					int thisCol = 0;
-					thisLine = thisLine + 1;// moved on a line
 					/*
 					 * hashmap of terrains on one line which is going to be
 					 * added to the terrains hashmap
@@ -42,7 +40,6 @@ public class NewWorld {
 					HashMap<Integer, Terrain> terrainOnALine = new HashMap<Integer, Terrain>();
 					/* For going through each element in the array */
 					for (int i = 0; i < array.length; i++) {
-						thisCol = thisCol + 1;// moving on columns
 						/*
 						 * Check if array equals nothing and it equals something
 						 * go through it
@@ -57,10 +54,6 @@ public class NewWorld {
 								
 								startRow = thisLine;
 								startCol = thisCol;
-								
-								/*create a robot and add it to this terrain*/
-								Robot robot = new Robot();
-								temporary.setRobot(robot);
 							} else if (array[i].equals("G")) {
 								goalRow = thisLine;
 								goalColumn = thisCol;
@@ -72,11 +65,13 @@ public class NewWorld {
 							temporary.setRow(thisLine);
 							temporary.setCol(thisCol);
 							terrainOnALine.put(thisCol, temporary);
+							thisCol = thisCol + 1;// moving on columns
 						}
 
 					}
 					terrains.put(thisLine, terrainOnALine);
 					column = thisCol;
+					thisLine = thisLine + 1;// moved on a line
 				} else {
 					break;
 				}
@@ -86,9 +81,28 @@ public class NewWorld {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		row = terrains.size() - 1;
+		column = terrains.get(0).size() - 1;
+		System.out.println("max row: " + row + " max col: " + column);
 	}
 	
 	public HashMap<Integer, HashMap<Integer, Terrain>> getAllTerrains(){
 		return terrains;
+	}
+	
+	public String toString(){
+		String str = null;
+		
+		for(int i = 0; i < row +1; i++){
+			HashMap<Integer, Terrain> currow = terrains.get(i);
+			for(int j = 0; j < column + 1; j++){
+				Terrain t = currow.get(j);
+				System.out.print(t.toString() + " ");
+			}
+			System.out.println();
+		}
+		
+		return str;
+		
 	}
 }
