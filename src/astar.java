@@ -1,6 +1,8 @@
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class astar {
@@ -20,20 +22,33 @@ public class astar {
 	 * Runs the simulation with given heuristic
 	 * 
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
-		astar a = new astar();
+	public static void main(String[] args) throws IOException {
+	    
+		Scanner scanner = new Scanner(System.in);
+	    System.out.print("Enter the file name: ");
+	    String filename = scanner.next();
+	    System.out.print("Enter the heuristic #: ");
+	    int NumOfHeuristic = scanner.nextInt();
 
+	    astar a = new astar();
+
+		new BuildWorld(20, 15, "world1");
+		new BuildWorld(30, 50, "world2");
+		new BuildWorld(60, 55, "world3");
+		new BuildWorld(80, 96, "world4");
+		new BuildWorld(100, 115, "world5");
 		args = new String[1];
-		args[0] = "test.txt";
+		args[0] = filename;
 		NewWorld world = new NewWorld(args);
 
 		world.toString();
 		
-		a.astarSearch(world);
+		a.astarSearch(world, NumOfHeuristic);
 	}
 
-	public void astarSearch(NewWorld world) {
+	public void astarSearch(NewWorld world, int heuristic) {
 		int nodesExpanded = 0;// number of expanded nodes
 
 		PriorityQueue<Node> pq = new PriorityQueue<Node>(); // Priority queue of
@@ -233,7 +248,7 @@ public class astar {
 					n.parent = cur;
 					n.costToGetHere = n.parent.costToGetHere + costToGetTo.get(n.root);
 					//TODO: have user specify heuristic to use, currently it uses heuristic 1 by default
-					n.heuristicCost = calculateHeuristic(world, n.root, 1);
+					n.heuristicCost = calculateHeuristic(world, n.root, heuristic);
 					n.totalCost = n.costToGetHere + n.heuristicCost;
 					n.actions = actionsToGetTo.get(n.root);
 					

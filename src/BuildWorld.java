@@ -13,6 +13,7 @@ public class BuildWorld {
 	 */
 	int row;
 	int column;
+	static final int hashLimt = 30;
 	public BuildWorld(int row, int column, String fn) throws IOException
 	{
 		this.row = row;
@@ -90,7 +91,7 @@ public class BuildWorld {
 			}
 		}
 		//add hash marks to represent obstacles
-		int hashLimit = rand.nextInt(9) + 1;
+		int hashLimit = rand.nextInt(30) + 1;
 		for (int i = 0; i < hashLimit; i ++){
 			worldArray[rand.nextInt(this.row)][rand.nextInt(this.column)] = "#";
 		}
