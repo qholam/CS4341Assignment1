@@ -492,4 +492,17 @@ public class astar {
 
 		return success;
 	}
+	
+	/**
+	 * Calculate the branching factor from given nodes and depth
+	 * @param Num of Nodes
+	 * @param Depth
+	 */
+	
+	private double calBranchingFactor(int depth, int NumOfNodes)
+	{
+	  double temp = 1/depth;
+	  double N = (double)NumOfNodes;
+	  return Math.pow(N, temp);
+	}
 }
