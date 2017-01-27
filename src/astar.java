@@ -17,6 +17,8 @@ public class astar {
 	String SOUTH = "south";
 	String WEST = "west";
 	String EAST = "east";
+	
+	int finalCost = 0;
 
 	/**
 	 * Runs the simulation with given heuristic
@@ -256,8 +258,9 @@ public class astar {
 					pq.add(n);
 
 					cur.children.add(n);
+					this.finalCost += n.costToGetHere; 
 				}
-
+				
 				/* cur node has been fully expanded, add it to closed */
 				closed.add(cur);
 				nodesExpanded++;
@@ -274,6 +277,8 @@ public class astar {
 			cur = cur.parent;
 		}
 		
+		/*print time cost / compexity*/
+		System.out.println("Time Taken: " + finalCost);
 		/*print out the actions taken*/
 		System.out.println("Number Actions Taken: " + numActions);
 		while(true){
