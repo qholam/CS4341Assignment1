@@ -13,7 +13,7 @@ public class NewWorld {
 	
 	/**
 	 * Initialize the world
-	 * @param args
+	 * @param args 
 	 */
 	public NewWorld(String[] args) {
 		String array[]; /* Array of elements in the file */

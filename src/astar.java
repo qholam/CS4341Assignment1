@@ -36,7 +36,7 @@ public class astar {
 
 	    astar a = new astar();
 
-		new BuildWorld(20, 15, "world1");
+		new BuildWorld(10, 12, "world1");
 		new BuildWorld(30, 50, "world2");
 		new BuildWorld(60, 55, "world3");
 		new BuildWorld(80, 96, "world4");

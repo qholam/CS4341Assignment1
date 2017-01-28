@@ -183,6 +183,8 @@ public class Terrain {
 			str = "G";
 		else if(start)
 			str = "S";
+		else if(navigable)
+			str = "#";
 		else
 			str = Integer.toString(complexity);
 		
